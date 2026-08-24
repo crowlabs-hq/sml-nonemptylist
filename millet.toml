@@ -1,0 +1,2 @@
+version = 1
+workspace.root = "lib/github.com/crowlabs-hq/sml-nonemptylist/nonemptylist.mlb"
