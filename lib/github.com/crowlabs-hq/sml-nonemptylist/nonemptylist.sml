@@ -9,6 +9,8 @@
 infix |>
 fun x |> f = f x
 
+infixr 5 <|
+
 structure Nonemptylist :> NonEmptyList = struct
     type 'a nonemptylist = 'a * 'a list
 
@@ -55,18 +57,6 @@ structure Nonemptylist :> NonEmptyList = struct
             print "\n"
         end
 
-end
+    val op <| = fn (a, l) => add_front a l
 
-fun main () =
-    let
-        open Nonemptylist
-        val my_list = new 10 |> add_back 30 |> add_back 20 |> add_front 5
-    in
-        print "[LIST] : "; my_list |> print_list Int.toString; print "\n";
-
-        print ("Length: " ^ (Int.toString (length my_list)) ^ "\n");
-        print ("Head: " ^ (Int.toString (head my_list)) ^ "\n");
-        print ("Last: " ^ (Int.toString (last my_list)) ^ "\n");
-        print "Init: "; List.app (fn x => print (Int.toString x ^ " ")) (init my_list); print "\n";
-        print "Tail: "; List.app (fn x => print (Int.toString x ^ " ")) (tail my_list); print "\n"
 end

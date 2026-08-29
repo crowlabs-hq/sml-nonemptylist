@@ -10,6 +10,12 @@ signature NonEmptyList = sig
     (* The non-empty list type *)
     type 'a nonemptylist
 
+    (*
+        `a <| l` prepends the element `a` to the non-empty list `l`.
+        This infix operator is an alias for `add_front`.
+    *)
+    val <| : 'a * 'a nonemptylist -> 'a nonemptylist
+
     (* Construct a singleton non-empty list containing the given element *)
     val new : 'a -> 'a nonemptylist
 
