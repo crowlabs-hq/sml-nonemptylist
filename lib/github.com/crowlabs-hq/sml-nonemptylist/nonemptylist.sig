@@ -3,7 +3,7 @@
     Author: Khalid B.
 
     This is free software: you can redistribute and/or modify it under the
-    GNU General Public License v2 (or later). See https://www.gnu.org/licenses.
+    GNU General Public License v3 (or later). See https://www.gnu.org/licenses.
 *)
 
 signature NonEmptyList = sig
