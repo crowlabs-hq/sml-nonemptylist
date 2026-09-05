@@ -40,6 +40,12 @@ signature NonEmptyList = sig
     (* Get the length of the list *)
     val length : 'a nonemptylist -> int
 
+    (* Reverse the list *)
+    val reverse : 'a nonemptylist -> 'a nonemptylist
+
+    (* Safely turn a regular list into a non-empty list *)
+    val from_list : 'a list -> 'a nonemptylist option
+
     (* print_list f l
     Prints the list 'l' with a function 'f' that converts type 'a to string
     *)

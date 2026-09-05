@@ -59,4 +59,16 @@ structure Nonemptylist :> NonEmptyList = struct
 
     val op <| = fn (a, l) => add_front a l
 
+    fun reverse ((first, rest) : 'a nonemptylist) : 'a nonemptylist =
+        let
+            fun rev_acc [] acc = acc
+                | rev_acc (f :: r) (accF, accR) = rev_acc r (f, accF :: accR)
+        in
+            rev_acc rest (first, [])
+        end
+
+    fun from_list (l: 'a list) : 'a nonemptylist option =
+        case l of
+            [] => NONE
+          | head :: tail => SOME (head, tail)
 end
