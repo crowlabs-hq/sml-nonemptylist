@@ -7,47 +7,70 @@
 *)
 
 signature NonEmptyList = sig
-    (* The non-empty list type *)
+    (*!
+     *  The non-empty list type
+    *)
     type 'a nonemptylist
 
-    (*
-        `a <| l` prepends the element `a` to the non-empty list `l`.
-        This infix operator is an alias for `add_front`.
+    (*!
+     * `a <| l` prepends the element `a` to the non-empty list `l`.
+     *
+     * This infix operator is an alias for `add_front`.
     *)
     val <| : 'a * 'a nonemptylist -> 'a nonemptylist
 
-    (* Construct a singleton non-empty list containing the given element *)
+    (*!
+     *  Construct a singleton non-empty list containing the given element.
+    *)
     val new : 'a -> 'a nonemptylist
 
-    (* Add an element to the end of the list *)
+    (*!
+     *  Add an element to the end of the list.
+    *)
     val add_back : 'a -> 'a nonemptylist -> 'a nonemptylist
 
-    (* Add an element to the beginning of the list *)
+    (*!
+     *  Add an element to the beginning of the list.
+    *)
     val add_front : 'a -> 'a nonemptylist -> 'a nonemptylist
 
-    (* Get the first element of the list *)
+    (*!
+     *  Get the first element of the list.
+    *)
     val head : 'a nonemptylist -> 'a
 
-    (* Get the last element of the list *)
+    (*!
+     *  Get the last element of the list.
+    *)
     val last : 'a nonemptylist -> 'a
 
-    (* Get all the elements of the list except the last one *)
+    (*!
+     *  Get all the elements of the list except the last one.
+    *)
     val init : 'a nonemptylist -> 'a list
 
-    (* Get the tail of the list, that is, all elements except the first one *)
+    (*!
+     *  Get the tail of the list, that is, all elements except the first one.
+    *)
     val tail : 'a nonemptylist -> 'a list
 
-    (* Get the length of the list *)
+    (*!
+     *  Get the length of the list.
+    *)
     val length : 'a nonemptylist -> int
 
-    (* Reverse the list *)
+    (*!
+     *  Reverse the list.
+    *)
     val reverse : 'a nonemptylist -> 'a nonemptylist
 
-    (* Safely turn a regular list into a non-empty list *)
+    (*!
+     *  Safely turn a regular list into a non-empty list.
+    *)
     val from_list : 'a list -> 'a nonemptylist option
 
-    (* print_list f l
-    Prints the list 'l' with a function 'f' that converts type 'a to string
+    (*!
+     *  `print_list f l` prints the list `l` with a function `f` that converts type `'a` to string
     *)
     val print_list : ('a -> string) -> 'a nonemptylist -> unit
 end
