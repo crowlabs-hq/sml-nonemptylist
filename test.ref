@@ -1,0 +1,11 @@
+[LIST] : 42 5 10 30 20
+[REV]  : 20 30 10 5 42
+
+Length: 5
+Head: 42
+Last: 20
+Init: 42 5 10 30
+Tail: 5 10 30 20
+from_list [1]: Some (1, [])
+from_list [1,2,3]: Some (1, [2, 3])
+from_list []: NONE
