@@ -1,0 +1,36 @@
+name: PolyML install and testsuite
+
+on:
+    push:
+        branches:
+            - main
+            - test-ci
+    pull_request:
+        branches:
+            - main
+            - test-ci
+
+    workflow_dispatch:
+
+jobs:
+    test-polyc:
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macos-latest]
+        runs-on: ${{ matrix.os }}
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+
+            - name: Install Poly/ML (Linux)
+              if: ${{ runner.os == 'Linux' }}
+              run: sudo apt-get update && sudo apt-get install -y polyml libpolyml-dev
+
+            - name: Install Poly/ML (macOS)
+              if: ${{ runner.os == 'macOS' }}
+              run: brew install polyml
+
+            - name: Run tests
+              run: |
+                  polyc -o a.out test.sml
+                  ./a.out

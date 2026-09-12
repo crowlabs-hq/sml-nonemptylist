@@ -1,0 +1,26 @@
+name: MLton Build test
+
+on:
+    push:
+        branches:
+            - main
+            - test-ci
+    pull_request:
+        branches:
+            - main
+            - test-ci
+
+    workflow_dispatch:
+
+jobs:
+    mlton-build:
+        runs-on: "ubuntu-latest"
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+
+            - name: Install MLton
+              run: sudo apt-get update && sudo apt-get install -y mlton
+
+            - name: Build library with MLton (compile-only smoke check)
+              run: mlton lib/github.com/crowlabs-hq/sml-nonemptylist/nonemptylist.mlb
