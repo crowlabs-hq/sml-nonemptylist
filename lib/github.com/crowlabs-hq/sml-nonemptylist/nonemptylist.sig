@@ -70,6 +70,11 @@ signature NonEmptyList = sig
     val from_list : 'a list -> 'a nonemptylist option
 
     (*!
+     *  Convert a non-empty list into a regular list.
+    *)
+    val to_list : 'a nonemptylist -> 'a list
+
+    (*!
      *  `print_list f l` prints the list `l` with a function `f` that converts type `'a` to string
     *)
     val print_list : ('a -> string) -> 'a nonemptylist -> unit

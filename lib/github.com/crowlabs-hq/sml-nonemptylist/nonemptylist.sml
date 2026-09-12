@@ -71,4 +71,7 @@ structure Nonemptylist :> NonEmptyList = struct
         case l of
             [] => NONE
           | head :: tail => SOME (head, tail)
+
+    fun to_list ((first, rest): 'a nonemptylist) : 'a list =
+        first :: rest
 end

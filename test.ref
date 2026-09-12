@@ -4,8 +4,12 @@
 Length: 5
 Head: 42
 Last: 20
-Init: 42 5 10 30
-Tail: 5 10 30 20
+Init: [42 5 10 30]
+Tail: [5 10 30 20]
 from_list [1]: Some (1, [])
 from_list [1,2,3]: Some (1, [2, 3])
 from_list []: NONE
+to_list (1, []): [1]
+to_list (1, [2]): [1 2]
+to_list (1, [2, 3, 4, 5, 6]): [1 2 3 4 5 6]
+to_list ("hello", ["world"]): [hello world]
